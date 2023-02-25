@@ -8,7 +8,7 @@ public abstract class PessoaBase {
 	private String nome;
 	private String email;
 	private String telefone;
-	private Endereco enderecoCompleto;
+	private Endereco endereco;
 	
 	@Override
 	public int hashCode() {
