@@ -2,10 +2,10 @@ package med.voll.api.model;
 
 public enum Especilidade {
 	
-	Ortopedia("ortopedia"), 
-	Cardiologia("cardiologia"), 
-	Ginecologia("ginecologia"), 
-	Dermatologia("dermatologia");
+	ORTOPEDIA("ortopedia"), 
+	CARDIOLOGIA("cardiologia"), 
+	GINECOLOGISTA("ginecologia"), 
+	DERMATOLOGISTA("dermatologia");
 	
 	private String descricao;
 
