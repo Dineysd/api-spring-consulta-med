@@ -31,6 +31,7 @@ public class Paciente {
 	private String telefone;
 	@Embedded
 	private Endereco endereco;
+	private Boolean ativo;
 	
 	public Long getId() {
 		return id;
@@ -59,6 +60,7 @@ public class Paciente {
 	//public Paciente(){}
 	
 	public Paciente(DadosCadastroPaciente dados) {
+		this.ativo = true;
 		this.nome = dados.nome();
 		this.email = dados.email();
 		this.cpf = dados.cpf();
@@ -77,6 +79,10 @@ public class Paciente {
 	        this.endereco.atualizarInformacoes(dados.endereco());
 	    }
 		
+	}
+
+	public void desativar() {
+		this.ativo = false;
 	}
 
 }
