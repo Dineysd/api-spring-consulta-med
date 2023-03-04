@@ -31,7 +31,7 @@ public class Medico {
 	private String crm;
 	private String telefone;
 	@Enumerated(EnumType.STRING)
-	private Especilidade especialidade;
+	private Especialidade especialidade;
 	@Embedded
 	private Endereco endereco;
 	private Boolean ativo;
@@ -69,7 +69,7 @@ public class Medico {
 		return telefone;
 	}
 
-	public Especilidade getEspecialidade() {
+	public Especialidade getEspecialidade() {
 		return especialidade;
 	}
 

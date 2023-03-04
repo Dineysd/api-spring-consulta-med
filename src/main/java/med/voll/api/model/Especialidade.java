@@ -1,6 +1,6 @@
 package med.voll.api.model;
 
-public enum Especilidade {
+public enum Especialidade {
 	
 	ORTOPEDIA("ortopedia"), 
 	CARDIOLOGIA("cardiologia"), 
@@ -9,7 +9,7 @@ public enum Especilidade {
 	
 	private String descricao;
 
-	Especilidade(String descricao) {
+	Especialidade(String descricao) {
 		this.descricao = descricao;
 	}
 
