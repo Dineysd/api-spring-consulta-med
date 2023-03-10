@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
+import med.voll.api.model.Especialidade;
 
 public record DadosAgendamentoConsulta(Long idMedico,
 
@@ -12,6 +13,8 @@ public record DadosAgendamentoConsulta(Long idMedico,
 
         @NotNull
         @Future
-        LocalDateTime data) {
+        LocalDateTime data,
+
+        Especialidade especialidade){
 
 }
