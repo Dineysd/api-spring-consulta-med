@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import med.voll.api.consulta.ConsultaRepository;
 import med.voll.api.consulta.DadosAgendamentoConsulta;
-import med.voll.api.consulta.validacoes.agendamento.ValidadorAgendamentoDeConsulta;
 import med.voll.api.infra.exception.ValidacaoException;
 
 @Component

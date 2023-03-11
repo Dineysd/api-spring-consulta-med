@@ -23,7 +23,6 @@ import med.voll.api.consulta.AgendaDeConsultas;
 import med.voll.api.consulta.DadosAgendamentoConsulta;
 import med.voll.api.consulta.DadosCancelamentoConsulta;
 import med.voll.api.consulta.DadosDetalhamentoConsulta;
-import med.voll.api.paciente.DadosListagemPaciente;
 
 @RestController
 @RequestMapping("consultas")
