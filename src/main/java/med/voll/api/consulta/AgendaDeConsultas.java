@@ -3,6 +3,8 @@ package med.voll.api.consulta;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import med.voll.api.consulta.validacoes.ValidadorAgendamentoDeConsulta;
@@ -10,6 +12,7 @@ import med.voll.api.infra.exception.ValidacaoException;
 import med.voll.api.medico.MedicoRepository;
 import med.voll.api.model.Consulta;
 import med.voll.api.model.Medico;
+import med.voll.api.paciente.DadosListagemPaciente;
 import med.voll.api.paciente.PacienteRepository;
 
 @Service
@@ -27,7 +30,7 @@ public class AgendaDeConsultas {
 	@Autowired
 	private List<ValidadorAgendamentoDeConsulta> validadores;
 
-	public Consulta agendar(DadosAgendamentoConsulta dados) {
+	public DadosDetalhamentoConsulta agendar(DadosAgendamentoConsulta dados) {
 
 		if (!pacienteRepository.existsById(dados.idPaciente())) {
 			throw new ValidacaoException("Id do paciente informado não existe!");
@@ -41,13 +44,19 @@ public class AgendaDeConsultas {
 
 		var paciente = pacienteRepository.getReferenceById(dados.idPaciente());
 		var medico = escolherMedico(dados);
+		
+		if(medico == null) {
+			throw new ValidacaoException("Não existe medico disponivel nessa data!");
+		}
 
 		var consulta = new Consulta(null, medico, paciente, dados.data());
 		consultaRepository.save(consulta);
-		return consulta;
+		
+		return new DadosDetalhamentoConsulta(consulta);
 	}
 
 	private Medico escolherMedico(DadosAgendamentoConsulta dados) {
+
 		if (dados.idMedico() != null) {
 			return medicoRepository.getReferenceById(dados.idMedico());
 		}
@@ -55,5 +64,9 @@ public class AgendaDeConsultas {
 			throw new ValidacaoException("Especialidade é obrigatória quando médico não for escolhido!");
 		}
 		return medicoRepository.escolherMedicoAleatorioLivreNaData(dados.especialidade(), dados.data());
+	}
+	
+	public Page<DadosDetalhamentoConsulta> buscarTodos(Pageable paginacao) {
+		return consultaRepository.findAll(paginacao).map(DadosDetalhamentoConsulta::new);
 	}
 }
