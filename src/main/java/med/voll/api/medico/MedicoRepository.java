@@ -11,6 +11,7 @@ import med.voll.api.model.Especialidade;
 import med.voll.api.model.Medico;
 
 public interface MedicoRepository extends JpaRepository<Medico, Long>{
+	
 	Page<Medico> findAllByAtivoTrue(Pageable paginacao);
 
 	@Query("""

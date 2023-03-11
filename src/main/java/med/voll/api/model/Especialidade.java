@@ -5,6 +5,7 @@ public enum Especialidade {
 	ORTOPEDIA("ortopedia"), 
 	CARDIOLOGIA("cardiologia"), 
 	GINECOLOGISTA("ginecologia"), 
+	PSIQUIATRA("psiquiatra"),
 	DERMATOLOGISTA("dermatologia");
 	
 	private String descricao;
