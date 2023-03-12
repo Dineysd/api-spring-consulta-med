@@ -49,7 +49,7 @@ public class Consulta {
     @Enumerated(EnumType.STRING)
 	private MotivoCancelamento motivoCancelamento;
 
-	public Consulta(Long id, Medico medico, Paciente paciente, @NotNull @Future LocalDateTime data) {
+	public Consulta(Long id, Medico medico, Paciente paciente, @NotNull @Future LocalDateTime data ) {
 		super();
 		this.id = id;
 		this.medico = medico;
