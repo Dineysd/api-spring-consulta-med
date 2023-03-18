@@ -13,6 +13,11 @@ public class ValidadorPacienteSemOutraConsultaNoDia implements ValidadorAgendame
 	@Autowired
 	private ConsultaRepository repository;
 
+	public ValidadorPacienteSemOutraConsultaNoDia(ConsultaRepository repository) {
+		super();
+		this.repository = repository;
+	}
+
 	@Override
 	public void validar(DadosAgendamentoConsulta dados) {
 		// TODO Auto-generated method stub

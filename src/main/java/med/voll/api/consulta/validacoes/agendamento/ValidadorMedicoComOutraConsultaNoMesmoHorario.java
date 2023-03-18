@@ -13,6 +13,12 @@ public class ValidadorMedicoComOutraConsultaNoMesmoHorario implements ValidadorA
 	@Autowired
 	private ConsultaRepository repository;
 	
+	public ValidadorMedicoComOutraConsultaNoMesmoHorario(ConsultaRepository repository) {
+		super();
+		this.repository = repository;
+	}
+
+
 	@Override
 	public void validar(DadosAgendamentoConsulta dados) {
 		// TODO Auto-generated method stub

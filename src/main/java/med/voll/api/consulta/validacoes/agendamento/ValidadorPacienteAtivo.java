@@ -13,13 +13,18 @@ public class ValidadorPacienteAtivo implements ValidadorAgendamentoDeConsulta{
 	@Autowired
     private PacienteRepository repository;
 
+	public ValidadorPacienteAtivo(PacienteRepository repository) {
+		super();
+		this.repository = repository;
+	}
+
 	@Override
 	public void validar(DadosAgendamentoConsulta dados) {
 		if(dados.idPaciente() == null) return;
 		
 		var pacienteEstaAtivo = repository.findAtivoById(dados.idPaciente());
 		if(!pacienteEstaAtivo) {
-			throw new ValidacaoException("Consulta não pode ser agendada com paciente excluido");
+			throw new ValidacaoException("Consulta não pode ser agendada com paciente removido");
 		}
 		
 	}

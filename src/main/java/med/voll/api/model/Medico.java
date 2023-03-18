@@ -93,5 +93,20 @@ public class Medico {
 		this.ativo = false;
 	}
 
+	public Medico(String nome2, String email2, String crm2, String telefone2, Especialidade especialidade2,
+			Endereco endereco2) {
+		this.ativo = true;
+		this.nome = nome2;
+		this.email = email2;
+		this.crm = crm2;
+		this.telefone = telefone2;
+		this.especialidade = especialidade2;
+		this.endereco = endereco2;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 }
 

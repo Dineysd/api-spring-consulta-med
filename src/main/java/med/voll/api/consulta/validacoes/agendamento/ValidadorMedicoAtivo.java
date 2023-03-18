@@ -13,6 +13,12 @@ public class ValidadorMedicoAtivo implements ValidadorAgendamentoDeConsulta {
 	@Autowired
     private MedicoRepository repository;
 
+	public ValidadorMedicoAtivo(MedicoRepository repository) {
+		super();
+		this.repository = repository;
+	}
+
+
 	@Override
 	public void validar(DadosAgendamentoConsulta dados) {
 		// TODO Auto-generated method stub
@@ -20,7 +26,7 @@ public class ValidadorMedicoAtivo implements ValidadorAgendamentoDeConsulta {
 		
 		var medicoEstaAtivo = repository.findAtivoById(dados.idMedico());
 		if(!medicoEstaAtivo) {
-			throw new ValidacaoException("Consulta não pode ser agendada com o medico excluido");
+			throw new ValidacaoException("Consulta não pode ser agendada com o medico removido");
 		}
 		
 	}

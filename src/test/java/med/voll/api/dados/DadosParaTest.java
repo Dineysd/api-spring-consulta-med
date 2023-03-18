@@ -13,8 +13,8 @@ public class DadosParaTest {
         return new DadosCadastroPaciente(
                 nome,
                 email,
-                "61999999999",
                 cpf,
+                "61999999999",
                 dadosEndereco()
         );
     }
@@ -32,12 +32,12 @@ public class DadosParaTest {
     }
 	
 	
-	private DadosEndereco dadosEndereco() {
+	public DadosEndereco dadosEndereco() {
         return new DadosEndereco("rua xpto",
         		null,
         		null,
                 "bairro",
-                "Maringá",
+                "Maringa",
                 "DF",
                 "00000000"
         );

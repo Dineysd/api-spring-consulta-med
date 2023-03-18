@@ -3,6 +3,7 @@ package med.voll.api.consulta;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,22 @@ public class AgendaDeConsultas {
 	
 	@Autowired
     private List<ValidadorCancelamentoDeConsulta> validadoresCancelamento;
+	
+	
+	public AgendaDeConsultas() {
+		super();
+	}
+
+	public AgendaDeConsultas(ConsultaRepository consultaRepository, MedicoRepository medicoRepository,
+			PacienteRepository pacienteRepository, List<ValidadorAgendamentoDeConsulta> validadores,
+			List<ValidadorCancelamentoDeConsulta> validadoresCancelamento) {
+		super();
+		this.consultaRepository = consultaRepository;
+		this.medicoRepository = medicoRepository;
+		this.pacienteRepository = pacienteRepository;
+		this.validadores = validadores;
+		this.validadoresCancelamento = validadoresCancelamento;
+	}
 
 	public DadosDetalhamentoConsulta agendar(DadosAgendamentoConsulta dados) {
 
@@ -58,7 +75,7 @@ public class AgendaDeConsultas {
 		return new DadosDetalhamentoConsulta(consulta);
 	}
 	
-	public void cancelar(DadosCancelamentoConsulta dados) {
+	public Consulta cancelar(DadosCancelamentoConsulta dados) {
         if (!consultaRepository.existsById(dados.idConsulta())) {
             throw new ValidacaoException("Id da consulta informado não existe!");
         }
@@ -67,6 +84,8 @@ public class AgendaDeConsultas {
 
         var consulta = consultaRepository.getReferenceById(dados.idConsulta());
         consulta.cancelar(dados.motivo());
+        
+        return consulta;
     }
 
 	private Medico escolherMedico(DadosAgendamentoConsulta dados) {
